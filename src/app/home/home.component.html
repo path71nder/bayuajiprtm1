@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="container text-center" *ngIf="authService.isLoggedIn && authService.userData as data">
+  <p>Selamat datang <strong>{{(data.displayName)?data.displayName : 'User'}}</strong></p>
+</div>
+<div class="text-center">
+  <h3>My Friends App..!</h3>
+</div>
+<div class="container" style="height: 500px; width: 400px">
+  <div class="card bg-blue text-white">
+    <img src="assets/image/BayuAjiP.jpg" class="card-img" alt="BayuAjiP">
+  </div>
+</div>
+
+<div class="container text-center" *ngIf="authService.isLoggedIn!==true">
+  <form [formGroup]="form">
+    <div class="form-group login-box">
+      <label for="email">Email
+        <input formControlName="email" type="text" class="form-control" placeholder="">
+        <div *ngIf="form.get('email').touched && form.get('email').invalid">
+          <small style="color: red;">Email is required</small>
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="password">Password
+        <input formControlName="password" type="password" class="form-control">
+          <div *ngIf="form.get('password').touched && form.get('password').invalid">
+            <small style="color: red;">Password is required</small>
+          </div>
+      </label>
+    </div>
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary" (click)="authService.SignIn(form.get('email').value, form.get('password').value)">Login</button>
+    <!--Or
+    <button class="btn btn-primary" routerLink="/sign-up">Sign Up</button>-->
+  </form>
+  <hr>
+  </div>
+

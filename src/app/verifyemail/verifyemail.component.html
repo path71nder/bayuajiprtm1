@@ -1,0 +1,16 @@
+<!-- <p>
+  verifyemail works!
+</p> -->
+
+<div class="container text-center">
+  <div class="card">
+    <div class="card-header">
+      Email Verification
+    </div>
+    <div class="card-body" *ngIf="AuthService as user">
+      <p>Kami telah mengirim E-mail verifikasi ke <strong>{{user.email}}.</strong></p>
+      <p>Harap untuk melakukan check ke email anda, Terimakasih.</p>
+      <button class="btn btn-primary" routerLink="/home">Go Home</button>
+    </div>
+  </div>
+</div>
